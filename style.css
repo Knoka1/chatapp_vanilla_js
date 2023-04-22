@@ -155,7 +155,6 @@ body {
   .chat-selector-container {
     margin-left: 3em;
     justify-content: flex-end;
-    background-color: black;
   }
   .container {
     background: var(--bg-secondary);
