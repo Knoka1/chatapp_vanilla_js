@@ -32,12 +32,20 @@ body {
   transform: translateY(2px);
 }
 
-.chat-selector {
+.main-view-container {
   display: flex;
-  justify-content: center;
-  gap: 1em;
-  margin: 3em auto 1em;
-  max-width: 40em;
+  align-items: flex-start;
+}
+
+.chat-selector-container {
+  box-shadow: 0 0 1.25em 0.5em var(--bg-secondary);
+  border-radius: 0.5em;
+  flex-direction: column;
+  display: flex;
+}
+
+.chat-selector {
+  max-width: 50em;
 }
 .chat-selector-button {
   width: 100%;
@@ -58,7 +66,7 @@ body {
   padding: 0.5em 1.25em;
   margin: auto;
   max-width: 37.5em;
-  height: 37.5em;
+  max-height: 37.5em;
   box-shadow: 0 0 1.25em 0.5em var(--bg-primary);
 }
 

@@ -3,43 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Title</title>
+    <title>VanillaChat</title>
     <link rel="stylesheet" href="style.css" />
+    <div class="header">
+      <h3>VanillaChat</h3>
+    </div>
   </head>
   <body>
-    <div class="chat-selector">
-      <button class="button chat-selector-button active-chat" id="pedro-chat">
-        Pedro
-      </button>
-      <button class="button chat-selector-button" id="alec-chat">Alec</button>
-    </div>
-    <div class="container">
-      <div class="chat-messages">
-        <div class="message blue-bg">
-          <div class="message-sender">Pedro</div>
-          <div class="message-text">Eai Alec, tudo certo?</div>
-          <div class="message-timestamp">10:30</div>
-        </div>
-        <div class="message gray-bg">
-          <div class="message-sender">Alec</div>
-          <div class="message-text">
-            Tudo certo, acabei de aplicar pra uma vaga na NewAge. E você?
-          </div>
-          <div class="message-timestamp">10:30</div>
+    <div class="main-view-container">
+      <div class="chat-selector-container">
+        <div class="chat-selector">
+          <button
+            class="button chat-selector-button active-chat"
+            id="pedro-chat"
+          >
+            Pedro
+          </button>
+          <button class="button chat-selector-button" id="alec-chat">
+            Alec
+          </button>
         </div>
       </div>
-      <h6 class="chat-header"></h6>
-      <form class="chat-input-form">
-        <input
-          type="text"
-          class="chat-input"
-          required
-          placeholder="Mensagem..."
-        />
-        <button type="submit" class="button send-button blue-bg">Enviar</button>
-      </form>
+      <div class="container">
+        <div class="chat-messages">
+          <div class="message blue-bg">
+            <div class="message-sender">Pedro</div>
+            <div class="message-text">Eai Alec, tudo certo?</div>
+            <div class="message-timestamp">10:30</div>
+          </div>
+          <div class="message gray-bg">
+            <div class="message-sender">Alec</div>
+            <div class="message-text">
+              Tudo certo, acabei de aplicar pra uma vaga na NewAge. E você?
+            </div>
+            <div class="message-timestamp">10:30</div>
+          </div>
+        </div>
+        <h6 class="chat-header"></h6>
+        <form class="chat-input-form">
+          <input
+            type="text"
+            class="chat-input"
+            required
+            placeholder="Mensagem..."
+          />
+          <button type="submit" class="button send-button blue-bg">
+            Enviar
+          </button>
+        </form>
 
-      <button class="button clear-chat-button">Limpar</button>
+        <button class="button clear-chat-button">Limpar</button>
+      </div>
     </div>
 
     <script src="app.js"></script>
