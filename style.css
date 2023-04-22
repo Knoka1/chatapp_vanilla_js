@@ -65,7 +65,7 @@ body {
   border-radius: 0.5em;
   padding: 0.5em 1.25em;
   margin: auto;
-  max-width: 37.5em;
+  min-width: 37.5em;
   max-height: 37.5em;
   box-shadow: 0 0 1.25em 0.5em var(--bg-primary);
 }
