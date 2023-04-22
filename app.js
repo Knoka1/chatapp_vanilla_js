@@ -9,8 +9,6 @@ const clearChatBtn = document.querySelector(".clear-chat-button");
 let messageSender = "Pedro";
 
 const messages = JSON.parse(localStorage.getItem("messages")) || [];
-console.log(typeof messages);
-console.log(messages);
 
 const createChatMessageElement = (message) => `
         <div class="message ${
@@ -30,7 +28,6 @@ window.onload = () => {
 
 const updateMessageSender = (name) => {
   messageSender = name;
-  chatHeader.innerText = `${messageSender} está digitando...`;
   chatInput.placeholder = "Mensagem...";
 
   if (name === "Pedro") {
@@ -66,12 +63,20 @@ const sendMessage = (event) => {
   chatMessages.innerHTML += createChatMessageElement(message);
 
   chatInputForm.reset();
-
+  chatHeader.innerText = "";
   chatMessages.scrollTop = chatMessages.scrollHeight;
 };
 
-chatInputForm.addEventListener("submit", sendMessage);
+const showIsTiping = () => {
+  chatHeader.innerText = `${messageSender} está digitando...`;
+  setTimeout(() => {
+    if (chatInput.value === "") chatHeader.innerText = "";
+    else showIsTiping();
+  }, 1500);
+};
 
+chatInputForm.addEventListener("submit", sendMessage);
+chatInputForm.addEventListener("keypress", showIsTiping);
 clearChatBtn.addEventListener("click", () => {
   localStorage.clear();
   chatMessages.innerHTML = "";
