@@ -1,3 +1,5 @@
+import { requestForecast } from "./modules/foreca-weather.js";
+
 const pedroSelectorBtn = document.querySelector("#pedro-chat");
 const alecSelectorBtn = document.querySelector("#alec-chat");
 const botSelectorBtn = document.querySelector("#bot-chat");
@@ -9,7 +11,6 @@ const clearChatBtn = document.querySelector(".clear-chat-button");
 
 let messageSender = "Pedro";
 const messages = JSON.parse(localStorage.getItem("messages")) || [];
-
 const createChatMessageElement = (message) => `
         <div class="message ${
           message.sender === "Pedro" ? "blue-bg" : "gray-bg"
@@ -95,7 +96,31 @@ const sendMessage = (event) => {
   localStorage.setItem("messages", JSON.stringify(messages));
   chatMessages.innerHTML += createChatMessageElement(message);
   if (message.sender === "BOT") {
-    getForecast();
+    if (chatInput.value === "1" || chatInput.value === "2") {
+      const weekForecast = requestForecast(chatInput.value);
+      console.log(weekForecast);
+      const message = {
+        sender: messageSender,
+        text: `The Maximum temperature is ${String(
+          weekForecast.maxTemp
+        )}°C and the Minimum temperature is ${weekForecast.minTemp}°C for ${
+          weekForecast.date
+        }`,
+        timestamp,
+      };
+      messages.push(message);
+      localStorage.setItem("messages", JSON.stringify(messages));
+      chatMessages.innerHTML += createChatMessageElement(message);
+    } else {
+      const message = {
+        sender: messageSender,
+        text: "Im sorry I didn't understand",
+        timestamp,
+      };
+    }
+    messages.push(message);
+    localStorage.setItem("messages", JSON.stringify(messages));
+    chatMessages.innerHTML += createChatMessageElement(message);
   }
   chatInputForm.reset();
   chatHeader.innerText = "";
