@@ -59,8 +59,7 @@ const updateMessageSender = (name) => {
     const message = {
       sender: messageSender,
       text: `Olá, eu sou o BOT de previsão do tepo. Escolha uma cidade para ver a previsão.
-      1) Rio de Janeiro 
-      2) São Paulo`,
+      1) Rio de Janeiro`,
       timestamp: new Date().toLocaleString("pt-BR", {
         hour: "numeric",
         minute: "numeric",
@@ -79,7 +78,7 @@ pedroSelectorBtn.onclick = () => updateMessageSender("Pedro");
 alecSelectorBtn.onclick = () => updateMessageSender("Alec");
 botSelectorBtn.onclick = () => updateMessageSender("BOT");
 
-const sendMessage = (event) => {
+const sendMessage = async (event) => {
   event.preventDefault();
 
   const timestamp = new Date().toLocaleString("pt-BR", {
@@ -97,15 +96,11 @@ const sendMessage = (event) => {
   chatMessages.innerHTML += createChatMessageElement(message);
   if (message.sender === "BOT") {
     if (chatInput.value === "1" || chatInput.value === "2") {
-      const weekForecast = requestForecast(chatInput.value);
-      console.log(weekForecast);
+      const weekForecast = await requestForecast(chatInput.value);
+
       const message = {
         sender: messageSender,
-        text: `The Maximum temperature is ${String(
-          weekForecast.maxTemp
-        )}°C and the Minimum temperature is ${weekForecast.minTemp}°C for ${
-          weekForecast.date
-        }`,
+        text: `The Maximum temperature is ${weekForecast.maxTemp}°C and the Minimum temperature is ${weekForecast.minTemp}°C for ${weekForecast.date}`,
         timestamp,
       };
       messages.push(message);
